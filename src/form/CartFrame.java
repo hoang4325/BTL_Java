@@ -340,7 +340,7 @@ public class CartFrame extends javax.swing.JFrame {
         payment.setcName(cName);
         payment.setProId(proId);
         payment.setProName(proName);
-        payment.setTotal(total);
+        payment.setTotal(t);
         payment.setDate(jTextField3.getText().trim());
         if (check()) {
             if (dao.insertPayment(payment)) {

@@ -294,7 +294,7 @@ public class Order extends javax.swing.JFrame {
                 Thread.sleep(40);
 
             } catch (InterruptedException ex) {
-                Logger.getLogger(AddProduct.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_formWindowOpened

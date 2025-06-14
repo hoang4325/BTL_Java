@@ -216,4 +216,27 @@ public class DAO {
             return false;
         }
     }
+    
+    public void getPaymentDetail(JTable table) {
+        String sql = "select * from payment order by pid desc";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[6];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getDouble(5);
+                row[5] = rs.getString(6);
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

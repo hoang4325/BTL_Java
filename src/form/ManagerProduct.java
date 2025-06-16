@@ -4,6 +4,8 @@ import DAO.DAO;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -24,6 +26,8 @@ public class ManagerProduct extends javax.swing.JFrame {
     public ManagerProduct() {
         initComponents();
         tableProduct();
+        jTextField1.setEnabled(false);
+        jTextField2.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -229,11 +233,26 @@ public class ManagerProduct extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        model = (DefaultTableModel) jTable1.getModel();
-        rowIndex = jTable1.getSelectedRow();
-        jTextField1.setText(model.getValueAt(rowIndex, 1).toString());
-        jTextField2.setText(model.getValueAt(rowIndex, 2).toString());
+//        model = (DefaultTableModel) jTable1.getModel();
+//        rowIndex = jTable1.getSelectedRow();
+//        jTextField1.setText(model.getValueAt(rowIndex, 1).toString());
+//        jTextField2.setText(model.getValueAt(rowIndex, 2).toString());
+        jTable1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int selectedRow = jTable1.getSelectedRow();
+                if (selectedRow >= 0) {
+                    // Bật lại các ô nhập
+                    jTextField1.setEnabled(true);
+                    jTextField2.setEnabled(true);
+                    jButton3.setEnabled(true);
 
+                    // Gán giá trị từ bảng vào các ô nhập nếu cần
+                    jTextField1.setText(jTable1.getValueAt(selectedRow, 1).toString()); // cột Tên SP
+                    jTextField2.setText(jTable1.getValueAt(selectedRow, 2).toString()); // cột Giá bán
+                }
+            }
+        });
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

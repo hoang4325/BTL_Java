@@ -35,7 +35,7 @@ public class DAO {
     }
 
     public void getallProduct(JTable table) {
-        String sql = "select * from product order by id desc";
+        String sql = "select * from product order by id asc";
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
